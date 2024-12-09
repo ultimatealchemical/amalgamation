@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Terminal</title>
+    <style>
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.2;
+        }
+        .terminal {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: flicker 0.5s infinite alternate;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        @keyframes flicker {
+            0% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+        .prompt::before {
+            content: "$ ";
+        }
+        .cursor {
+            animation: blink 1s infinite;
+            background: #00ff00;
+            width: 8px;
+            height: 15px;
+            display: inline-block;
+        }
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        .ascii {
+            color: #00ff00;
+            white-space: pre;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .output { margin: 10px 0; }
+        .command { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="header">
+            <div class="title">THE ULTIMATE ALCHEMICAL AMALGAMATION</div>
+            <pre class="ascii">
+              _____
+             /    /\
+            /    /  \
+           /    /    \
+          /    /      \
+         /    /   /\   \
+        /    /   /  \   \
+       /    /   /    \   \
+      /    /   /      \   \
+     /    /   /        \   \
+    /____/___/__________\___\
+            </pre>
+        </div>
+        <div class="command prompt">login: alchemist</div>
+        <div class="command prompt">password: ******</div>
+        <div class="output">Welcome to AlchemicalOS v1.0.0</div>
+        <div class="output">
+            > THE ZENITH OF ZYMURGICAL ZYMOLOGY
+            > A TESTAMENT TO TRANSCENDENT POWER
+        </div>
+        <div class="command prompt"><span class="cursor"></span></div>
+    </div>
+    <script>
+        document.addEventListener('keypress', () => {
+            const output = document.createElement('div');
+            output.className = 'output';
+            output.textContent = 'Access denied: Insufficient permissions';
+            document.querySelector('.terminal').insertBefore(output, document.querySelector('.cursor').parentElement);
+        });
+    </script>
+</body>
+</html>
